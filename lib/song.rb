@@ -8,6 +8,7 @@ class Song
     self.to_s.downcase.pluralize
   end
 
+  binding.pry
   def self.column_names
     DB[:conn].results_as_hash = true
     sql = "pragma table_info('#{table_name}')"
@@ -26,7 +27,6 @@ class Song
   end
 
   def save
-    binding.pry
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
