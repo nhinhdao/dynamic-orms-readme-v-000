@@ -8,7 +8,6 @@ class Song
     self.to_s.downcase.pluralize
   end
 
-  binding.pry
   def self.column_names
     DB[:conn].results_as_hash = true
     sql = "pragma table_info('#{table_name}')"
@@ -52,5 +51,5 @@ class Song
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
-
+binding.pry
 end
