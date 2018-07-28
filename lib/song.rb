@@ -11,16 +11,8 @@ class Song
   def self.column_names
     DB[:conn].results_as_hash = true
     sql = "pragma table_info('#{table_name}')"
-    # column_names = DB[:conn].execute(sql).map {|row| row['name']}.compact
-    # column_names
-     table_info = DB[:conn].execute(sql)
-  column_names = []
-
-  table_info.each do |column|
-    column_names << column["name"]
-  end
-
-  column_names.compact
+    column_names = DB[:conn].execute(sql).map {|row| row['name']}.compact
+    column_names
   end
 
   self.column_names.each do |col_name|
