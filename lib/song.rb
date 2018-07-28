@@ -51,4 +51,8 @@ class Song
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
+
+  def print
+      DB[:conn].execute("SELECT * FROM songs")
+  end
 end
