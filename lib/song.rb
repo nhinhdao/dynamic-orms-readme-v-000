@@ -55,4 +55,5 @@ class Song
   def print
       DB[:conn].execute("SELECT * FROM songs")
   end
+  binding.pry
 end
