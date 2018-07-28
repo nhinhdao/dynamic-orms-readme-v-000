@@ -13,7 +13,6 @@ class Song
     sql = "pragma table_info('#{table_name}')"
     column_names = DB[:conn].execute(sql).map {|row| row['name']}.compact
     column_names
-        binding.pry
   end
 
   self.column_names.each do |col_name|
@@ -26,6 +25,7 @@ class Song
     end
   end
 
+    binding.pry
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
     DB[:conn].execute(sql)
